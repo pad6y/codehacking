@@ -2,6 +2,19 @@
 
 @section('content')
 
+@if(Session::has('user_deleted'))
+
+   <p class="bg-danger">{{session('user_deleted')}}</p>
+
+@elseif(Session::has('user_created'))
+   <p class="bg-success">{{session('user_created')}}</p>
+   
+@elseif(Session::has('user_updated'))
+   <p class="bg-warning">{{session('user_updated')}}</p>
+   
+@endif
+
+
 <h1>Users</h1>
 
 <table class="table table-striped">
