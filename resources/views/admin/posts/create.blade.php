@@ -8,7 +8,7 @@
 
    <div class="row">
    
-      {!! Form::open(['method' => 'POST', 'enctype'=>'multipart/form-data', 'action' => 'AdminPostsController@store']) !!}
+      {!! Form::open(['method' => 'POST', 'enctype'=>'multipart/form-data', 'action' => ['AdminPostsController@store'], 'file' =>true]) !!}
       
          <div class='form-group'>
             {!! Form::label('title', 'Title:') !!}
@@ -35,6 +35,7 @@
          </div>
       
       {!! Form::close() !!}
+  
    
    </div>
    

@@ -3,7 +3,6 @@
 @section('content')
 
 @if(Session::has('user_deleted'))
-
    <p class="bg-danger">{{session('user_deleted')}}</p>
 
 @elseif(Session::has('user_created'))

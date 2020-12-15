@@ -1,8 +1,17 @@
 @extends('layouts.admin')
 
-
-
 @section('content')
+
+@if(Session::has('post_deleted'))
+   <p class="bg-danger">{{session('post_deleted')}}</p>
+
+@elseif(Session::has('post_created'))
+   <p class="bg-success">{{session('post_created')}}</p>
+   
+@elseif(Session::has('post_updated'))
+   <p class="bg-warning">{{session('post_updated')}}</p>
+   
+@endif
 
    <h1>Posts</h1>
 
@@ -29,8 +38,8 @@
                   <td>{{$post->user->name}}</td>
                   <td><img height="50" src="{{$post->photo ? $post->photo->file : '/image/placeholder_img.jpg'}}" alt=""></td>
                   <td>{{$post->category ? $post->category->name : 'No Category'}}</td>
-                  <td>{{$post->title}}</td>
-                  <td>{{$post->body}}</td>
+               <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->title}}</a></td>
+                  <td>{{str_limit($post->body, 7)}}</td>
                   <td>{{$post->created_at->diffForHumans()}}</td>
                   <td>{{$post->updated_at->diffForHumans()}}</td>
                </tr>
