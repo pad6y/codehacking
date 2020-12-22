@@ -5,14 +5,14 @@
 
 
 
-   @if(count($comments) > 0)
+   @if($comments)
 
    <h1>Post comments</h1>
 
       <table class='table'>
          <thead>
             <tr>
-               <th>ID</th>
+               <th>Comments ID</th>
                <th>Author</th>
                <th>Email</th>
                <th>Comments</th>
@@ -31,7 +31,6 @@
                <td>{{$comment->email}}</td>
                <td>{{$comment->body}}</td>
                <td><a href="{{route('home.post', $comment->post_id)}}">View Post</a></td>
-               <td><a href="{{route('admin.replies.show', $comment->id)}}">View Replies</a></td>
                
                <td>
                   

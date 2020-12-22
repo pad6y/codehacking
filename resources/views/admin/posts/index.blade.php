@@ -24,6 +24,8 @@
           <th>Category</th>
           <th>Title</th>
           <th>Content</th>
+          <th>Post</th>
+          <th>Comments</th>
           <th>Create_at</th>
           <th>Updated_at</th>
         </tr>
@@ -40,6 +42,8 @@
                   <td>{{$post->category ? $post->category->name : 'No Category'}}</td>
                <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->title}}</a></td>
                   <td>{{str_limit($post->body, 7)}}</td>
+                  <td><a href="{{route('home.post', $post->id)}}">View post</a></td>
+                  <td><a href="{{route('admin.comments.show', $post->id)}}">View comments</a></td>
                   <td>{{$post->created_at->diffForHumans()}}</td>
                   <td>{{$post->updated_at->diffForHumans()}}</td>
                </tr>
