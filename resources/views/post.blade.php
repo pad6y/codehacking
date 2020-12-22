@@ -63,6 +63,9 @@
    
    @endif
    
+   
+   
+   
    <hr>
 
    <!-- Posted Comments -->
@@ -85,10 +88,11 @@
 
          <!-- Nested Comment -->
          @if(count($comment->replies) > 0)
-   
+         
             @foreach($comment->replies as $reply)
+            
+               @if($comment->replies)
                
-               @if($reply->is_active == 1)
                                  
                <div id="nested-comment" class="media">
                   <a class="pull-left" href="#">
@@ -131,15 +135,32 @@
                
                   <!-- End Nested Comment -->
                </div>
-               
-               @else
-      
-               <h1 class="text-center">No replies</h1>
-               
-               
                @endif
                
             @endforeach
+            
+               @else
+      
+               <div class="comment-reply-container">
+                  <button class="toggle-reply btn btn-primary pull-right">Reply</button>
+                  <div class="comment-reply col-sm-9">
+                    {!! Form::open(['method' => 'POST', 'action' => 'CommentRepliesController@createReply']) !!}
+   
+                      {!! Form::hidden('comment_id', $comment->id) !!}
+                      <div class="form-group">
+                        {!! Form::label('body', 'Reply:') !!}
+                        {!! Form::textarea('body', null, ['class' => 'form-control', 'rows' => 1]) !!}
+                      </div>
+   
+                      <div class="form-group">
+                        {!! Form::submit('Submit Reply', ['class' => 'btn btn-primary']) !!}
+                      </div>
+                    {!! Form::close() !!}
+                  </div>
+                </div>
+               
+               
+               
       
          @endif
       
@@ -161,7 +182,8 @@
       $(".comment-reply-container .toggle-reply").click(function() {
          
          $(this).next().slideToggle('slow');
-      })
+         
+      });
       
       
    </script>

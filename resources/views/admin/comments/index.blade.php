@@ -17,6 +17,7 @@
                <th>Email</th>
                <th>Comments</th>
                <th>Post</th>
+               <th>Replies</th>
                <th>Approve/ Un-approve</th>
                <th>Delete</th>
             </tr>
